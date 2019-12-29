@@ -2,5 +2,8 @@
   "github": {
     "release": true,
 	"assets": ["dist/"]
+  },
+  "hooks":{
+	"before:bump" : "build.sh"
   }
 }
