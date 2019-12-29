@@ -1,7 +1,7 @@
 {
   "github": {
     "release": true,
-	"assets": ["dist/"]
+	"assets": ["dist.zip"]
   },
   "hooks":{
 	"before:bump" : "build.sh"
