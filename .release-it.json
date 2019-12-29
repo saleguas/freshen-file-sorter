@@ -1,0 +1,9 @@
+{
+  "github": {
+    "release": true,
+	"assets": ["dist/"]
+  },
+  "hooks": {
+	"after:bump" : "build.bat"
+  }
+}
