@@ -1,7 +1,0 @@
-README.md
-setup.py
-freshen_sorter.egg-info/PKG-INFO
-freshen_sorter.egg-info/SOURCES.txt
-freshen_sorter.egg-info/dependency_links.txt
-freshen_sorter.egg-info/entry_points.txt
-freshen_sorter.egg-info/top_level.txt

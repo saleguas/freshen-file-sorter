@@ -1,1 +1,3 @@
 dist.zip
+setup.py
+*.egg-info
