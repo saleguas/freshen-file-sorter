@@ -2,6 +2,8 @@ import modules
 import argparse
 import os
 
+
+# This file should not be called by the user. The registry uses this file.
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument(

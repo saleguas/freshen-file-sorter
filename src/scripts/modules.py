@@ -1,10 +1,11 @@
 import shutil
 import os
-import pathlib
 import datetime
 import yaml
 
 # Making a class to move each file to the same location
+
+
 class FileMover:
 
     def __init__(self, moveLocation):
@@ -36,8 +37,6 @@ class FileMover:
             print("Couldn't move {}".format(fileLocation))
 
 
-
-
 def sortbyType(path):
     srcLoc = os.path.join(os.path.dirname(
         os.path.abspath(__file__)), '..', 'config', 'filegroups.yml')
@@ -56,7 +55,8 @@ def sortbyType(path):
         for file in filegroups[key]:
             filePool.append(file)
     for file in os.listdir(path):
-        fileExt = pathlib.Path(file).suffix[1:]
+        fileExt = os.path.splitext(path)[1]
+
         folderName = 'Others'
         for key in filekeys:
             for extension in filegroups[key]:
@@ -73,7 +73,7 @@ def sortbyType(path):
 
 def sortByExtension(path):
     for file in os.listdir(path):
-        fileExt = pathlib.Path(file).suffix[1:]
+        fileExt = os.path.splitext(file)[1]
         currentLoc = os.path.join(path, file)
         if os.path.isfile(currentLoc):
             destination = os.path.join(path, "_" + fileExt)
@@ -101,8 +101,6 @@ def sortByDate(path, precision):
             destination = os.path.join(path, "_" + datename)
             fm = FileMover(destination)
             fm.move(currentLoc)
-
-
 
 
 def extract(originDir, currentDir):

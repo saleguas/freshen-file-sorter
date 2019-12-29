@@ -21,7 +21,7 @@ setuptools.setup(
     ],
     entry_points = {
         'console_scripts': [
-            'reginstall=dist.reginstall:install'
+            'freshen=dist.manual_parser'
         ]
     },
     python_requires='>=3.6',

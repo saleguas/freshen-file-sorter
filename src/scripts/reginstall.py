@@ -7,8 +7,9 @@ import ctypes
 
 # Takes the registry path, creates it if it doesn't exist, then sets the value
 rootPath = 'Directory\\Background\\shell\\FileSorter'
-pyLoc = sys.executable#.replace('python.exe', 'pythonw.exe')
-scriptLoc = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'main.py')
+pyLoc = sys.executable  # .replace('python.exe', 'pythonw.exe')
+scriptLoc = os.path.join(os.path.dirname(
+    os.path.realpath(__file__)), 'main.py')
 
 
 def is_admin():
@@ -16,6 +17,7 @@ def is_admin():
         return ctypes.windll.shell32.IsUserAnAdmin()
     except:
         return False
+
 
 def formatCommand(param):
     global pyLoc, scriptLoc
@@ -28,6 +30,7 @@ def setValue(path, variable, value):
     winreg.SetValueEx(registry_key, variable, 0, winreg.REG_SZ, value)
     winreg.CloseKey(registry_key)
 
+
 def createMenu(path, caption):
     winreg.CreateKey(winreg.HKEY_CLASSES_ROOT, path)
     setValue(path, 'MUIVerb', caption)
@@ -35,6 +38,7 @@ def createMenu(path, caption):
     path = os.path.join(path, 'shell')
     winreg.CreateKey(winreg.HKEY_CLASSES_ROOT, path)
     return path
+
 
 def createCommand(path, name, command):
     path = os.path.join(path, name.replace(' ', '_'))
@@ -47,7 +51,9 @@ def createCommand(path, name, command):
 
 def createOptionCommand(path, names, values, command):
     for name, value in zip(names, values):
-        createCommand(path, name, formatCommand('--{} {}'.format(command, value)))
+        createCommand(path, name, formatCommand(
+            '--{} {}'.format(command, value)))
+
 
 def install():
     global rootPath, typeCommand
@@ -71,7 +77,8 @@ def install():
     datePath = os.path.join(rootPath, 'Sort_By_Date')
     datePath = createMenu(datePath, 'Sort By Date')
 
-    createOptionCommand(datePath, ['Day', 'Month', 'Year'], ['D', 'M', 'Y'], 'date')
+    createOptionCommand(datePath, ['Day', 'Month', 'Year'], [
+                        'D', 'M', 'Y'], 'date')
 
     # alphaPath = os.path.join(rootPath, 'Sort_alpha')
     # alphaPath = createMenu(alphaPath, 'Sort Alphabetically')
@@ -79,11 +86,13 @@ def install():
     # nums = list(map(str, range(1, 11)))
     # createOptionCommand(alphaPath, nums, nums, 'alphabetically')
 
+
 if __name__ == "__main__":
     if is_admin():
         install()
     else:
-        ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, __file__, None, 1)
+        ctypes.windll.shell32.ShellExecuteW(
+            None, "runas", sys.executable, __file__, None, 1)
 
 
 # Computer\HKEY_CLASSES_ROOT\Directory\shell
