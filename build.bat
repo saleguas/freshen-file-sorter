@@ -1,4 +1,4 @@
-del /s /q dist/*.*
+del /s /q "dist/*.*"
 rmdir /s /q dist
 mkdir dist
 ROBOCOPY "src/scripts/" "dist" *.py
