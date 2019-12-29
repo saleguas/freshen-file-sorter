@@ -1,7 +1,7 @@
 import winreg
 import os
 import sys
-
+import ctypes
 # Ok, so we have to make a windows registry install for cascading menus
 
 
@@ -9,6 +9,13 @@ import sys
 rootPath = 'Directory\\Background\\shell\\FileSorter'
 pyLoc = sys.executable#.replace('python.exe', 'pythonw.exe')
 scriptLoc = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'main.py')
+
+
+def is_admin():
+    try:
+        return ctypes.windll.shell32.IsUserAnAdmin()
+    except:
+        return False
 
 def formatCommand(param):
     global pyLoc, scriptLoc
@@ -72,13 +79,10 @@ def install():
     # nums = list(map(str, range(1, 11)))
     # createOptionCommand(alphaPath, nums, nums, 'alphabetically')
 
-
-install()
-
-
-
-
-
+if is_admin():
+    install()
+else:
+    ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, __file__, None, 1)
 
 
 # Computer\HKEY_CLASSES_ROOT\Directory\shell
