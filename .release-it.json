@@ -4,6 +4,6 @@
 	"assets": ["dist/"]
   },
   "hooks": {
-	"after:bump" : "build.bat"
+	"before:release" : "build.bat"
   }
 }
