@@ -79,10 +79,11 @@ def install():
     # nums = list(map(str, range(1, 11)))
     # createOptionCommand(alphaPath, nums, nums, 'alphabetically')
 
-if is_admin():
-    install()
-else:
-    ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, __file__, None, 1)
+if __name__ == "__main__":
+    if is_admin():
+        install()
+    else:
+        ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, __file__, None, 1)
 
 
 # Computer\HKEY_CLASSES_ROOT\Directory\shell
