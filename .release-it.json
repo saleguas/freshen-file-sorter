@@ -2,8 +2,5 @@
   "github": {
     "release": true,
 	"assets": ["dist/"]
-  },
-  "hooks": {
-	"after:init" : "build.bat"
   }
 }
