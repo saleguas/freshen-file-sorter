@@ -1,6 +1,32 @@
 # freshen
 
 [![PyPI license](https://img.shields.io/pypi/l/ansicolortags.svg)](https://pypi.python.org/pypi/ansicolortags/)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/freshen-sorter)
+![PyPI - Implementation](https://img.shields.io/pypi/implementation/freshen-sorter)
+![PyPI - Wheel](https://img.shields.io/pypi/wheel/freshen-sorter)
+![PyPI](https://img.shields.io/pypi/v/freshen-sorter)
+
+- [freshen](#freshen)
+  * [What is freshen?](#what-is-freshen-)
+  * [What is the context menu?](#what-is-the-context-menu-)
+- [Installation](#installation)
+  * [Install from PyPI](#install-from-pypi)
+  * [Installing from Source files](#installing-from-source-files)
+- [Usage](#usage)
+- [Organizers](#organizers)
+  * [Sort by File Type](#sort-by-file-type)
+    + [filegroups.yml](#filegroupsyml)
+  * [Sort by extension](#sort-by-extension)
+  * [Sort by Date](#sort-by-date)
+    + [Day](#day)
+    + [Month](#month)
+    + [Year](#year)
+  * [Uproot Files](#uproot-files)
+- [Extra Information](#extra-information)
+- [Licensing](#licensing)
+
+
+
 ## What is freshen?
 
 A program that sorts files based on various attributes from the windows context menu. Simply install the program and your context menu will have an added `Sort Files` entry.

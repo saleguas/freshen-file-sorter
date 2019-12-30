@@ -10,3 +10,4 @@ zip -r output/freshen.zip output/freshen/
 cp *.md output/
 cp src/setup.py output/
 cp src/__init__.py output/freshen/
+cp -r graphics output/
