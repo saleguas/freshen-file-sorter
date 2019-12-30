@@ -18,15 +18,18 @@ if __name__ == "__main__":
         '-x', '--extract', help='Uproots ALL files in sub directories to current directory. Be careful, this will clear out any and all subfolders', action='store_true')
 
     args = vars(parser.parse_args())
-    print(args)
 
-    if args['extract']:
-        modules.extract(os.getcwd(), os.getcwd())
-    if args['date']:
-        modules.sortByDate(os.getcwd(), args['date'][0])
-    if args['alphabetically']:
-        modules.sortAlphabetically(os.getcwd(), int(args['alphabetically'][0]))
-    if args['extension']:
-        modules.sortByExtension(os.getcwd())
-    if args['type']:
-        modules.sortbyType(os.getcwd())
+    try:
+        if args['extract']:
+            modules.extract(os.getcwd(), os.getcwd())
+        if args['date']:
+            modules.sortByDate(os.getcwd(), args['date'][0])
+        if args['alphabetically']:
+            modules.sortAlphabetically(os.getcwd(), int(args['alphabetically'][0]))
+        if args['extension']:
+            modules.sortByExtension(os.getcwd())
+        if args['type']:
+            modules.sortbyType(os.getcwd())
+    except Exception as e:
+        print(e)
+        input()

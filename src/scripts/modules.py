@@ -42,6 +42,7 @@ def sortbyType(path):
         os.path.abspath(__file__)), '..', 'config', 'filegroups.yml')
     distLoc = yamlLoc = os.path.join(os.path.dirname(
         os.path.abspath(__file__)), 'config', 'filegroups.yml')
+
     filegroups = ''
     try:
         filegroups = yaml.load(
@@ -55,8 +56,7 @@ def sortbyType(path):
         for file in filegroups[key]:
             filePool.append(file)
     for file in os.listdir(path):
-        fileExt = os.path.splitext(path)[1]
-
+        fileExt = os.path.splitext(file)[1].replace('.', '')
         folderName = 'Others'
         for key in filekeys:
             for extension in filegroups[key]:
@@ -69,6 +69,7 @@ def sortbyType(path):
         destination = os.path.join(path, folderName)
         fm = FileMover(destination)
         fm.move(currentLoc)
+    input()
 
 
 def sortByExtension(path):
