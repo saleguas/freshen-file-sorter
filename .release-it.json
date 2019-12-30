@@ -1,9 +1,6 @@
 {
   "github": {
     "release": true,
-	"assets": ["output/dist.zip"]
-  },
-  "hooks": {
-    "before:init": "publishing/buildDist.sh"
+	   "assets": ["output/freshen.zip"]
   }
 }

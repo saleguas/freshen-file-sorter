@@ -15,8 +15,15 @@ The context menu is the option menu created from right clicking, such as:
 # Installation
 
 * ## Install from PyPI
-Still being implemented. Should be a few days max from uploading this.
-
+First, install the pip package
+```python
+pip install freshen-sorter
+```
+and run the following command to install to the context menu. This requires administrator permissions.
+```python
+freshen -i
+```
+And you're done!
 * ## Installing from Source files
 
 1. Download the [latest release](https://github.com/saleguas/freshen/releases) from the repository.
