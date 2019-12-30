@@ -23,18 +23,14 @@ def main():
                         help='Removes the program from the registry and the context menu. *Not implemented yet*', action='store_true')
     args = vars(parser.parse_args())
 
-    try:
-        if args['install']:
-            ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, os.path.join(
-                __file__, '..', 'reginstall.py'), None, 1)
-        if args['extract']:
-            modules.extract(args['extract'], args['extract'])
-        if args['date']:
-            modules.sortByDate(args['date'][1], args['date'][0])
-        if args['extension']:
-            modules.sortByExtension(args['extension'])
-        if args['type']:
-            modules.sortbyType(args['type'])
-    except Exception as e:
-        print(e)
-        input()
+    if args['install']:
+        ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, os.path.join(
+            __file__, '..', 'reginstall.py'), None, 1)
+    if args['extract']:
+        modules.extract(args['extract'], args['extract'])
+    if args['date']:
+        modules.sortByDate(args['date'][1], args['date'][0])
+    if args['extension']:
+        modules.sortByExtension(args['extension'])
+    if args['type']:
+        modules.sortbyType(args['type'])
