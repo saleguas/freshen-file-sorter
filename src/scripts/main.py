@@ -19,17 +19,13 @@ if __name__ == "__main__":
 
     args = vars(parser.parse_args())
 
-    try:
-        if args['extract']:
-            modules.extract(os.getcwd(), os.getcwd())
-        if args['date']:
-            modules.sortByDate(os.getcwd(), args['date'][0])
-        if args['alphabetically']:
-            modules.sortAlphabetically(os.getcwd(), int(args['alphabetically'][0]))
-        if args['extension']:
-            modules.sortByExtension(os.getcwd())
-        if args['type']:
-            modules.sortbyType(os.getcwd())
-    except Exception as e:
-        print(e)
-        input()
+    if args['extract']:
+        modules.extract(os.getcwd(), os.getcwd())
+    if args['date']:
+        modules.sortByDate(os.getcwd(), args['date'][0])
+    if args['alphabetically']:
+        modules.sortAlphabetically(os.getcwd(), int(args['alphabetically'][0]))
+    if args['extension']:
+        modules.sortByExtension(os.getcwd())
+    if args['type']:
+        modules.sortbyType(os.getcwd())

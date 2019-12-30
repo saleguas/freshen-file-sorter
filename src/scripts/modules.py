@@ -69,7 +69,6 @@ def sortbyType(path):
         destination = os.path.join(path, folderName)
         fm = FileMover(destination)
         fm.move(currentLoc)
-    input()
 
 
 def sortByExtension(path):
