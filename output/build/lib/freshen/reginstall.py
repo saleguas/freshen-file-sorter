@@ -9,7 +9,7 @@ import ctypes
 rootPath = 'Directory\\Background\\shell\\FileSorter'
 pyLoc = sys.executable  # .replace('python.exe', 'pythonw.exe')
 scriptLoc = os.path.join(os.path.dirname(
-    os.path.realpath(__file__)), 'main.py')
+    os.path.realpath(__file__)), 'main.py') # Location of parser to be called
 
 
 def is_admin():
