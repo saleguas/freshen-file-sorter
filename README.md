@@ -95,15 +95,17 @@ You can either change the `filegroups.yml` file in the `src` directory and use t
 
 ## Sort by extension
 
-    Quite straightforward. Sorts each file into folders exclusively based on their extension.
-    ![](graphics/sortbyextension.gif)
+Quite straightforward. Sorts each file into folders exclusively based on their extension.
+
+![](graphics/sortbyextension.gif)
 
 ## Sort by Date
 
-    The only option that uses a cascading context menu(nested menus).
-    ![](graphics/cascadingmenu.png)
+The only option that uses a cascading context menu(nested menus).
 
-    Sorts each file by the **DATE MODIFIED** attribute of the file. Has three options:
+![](graphics/cascadingmenu.png)
+
+Sorts each file by the **DATE MODIFIED** attribute of the file. Has three options:
 
 ### Day
 
