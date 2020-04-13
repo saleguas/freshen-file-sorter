@@ -103,7 +103,7 @@ Quite straightforward. Sorts each file into folders exclusively based on their e
 
 The only option that uses a cascading context menu(nested menus).
 
-![](graphics/cascadingmenu.png)
+![](graphics/sortbydatemonth.PNG)
 
 Sorts each file by the **DATE MODIFIED** attribute of the file. Has three options:
 
