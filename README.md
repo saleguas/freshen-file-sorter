@@ -40,6 +40,11 @@ freshen -i
 
 And you're done!
 
+To uninstall, simply run:
+
+```python
+freshen -u
+```
 ## Installing from Source files
 
 1.  Download the [latest release](https://github.com/saleguas/freshen/releases) from the repository.
