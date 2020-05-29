@@ -27,9 +27,10 @@ First, install the pip package
 pip install freshen-sorter
 ```
 
-If you do not have the `PyYaml` package installed, you need to install it via pip:
+Install the dependencies:
 ```python
 pip install pyyaml
+pip install context_menu
 ```
 
 and run the following command to install to the context menu. This requires administrator permissions.
