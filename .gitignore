@@ -1,3 +1,4 @@
 dist.zip
-setup.py
 *.egg-info
+output
+.github
