@@ -1,24 +1,27 @@
 import os
 import sys
 
+sys.path.append(os.path.abspath('.'))
+
 
 def install():
     from context_menu import menus
+    import modules
 
     pyLoc = sys.executable  # .replace('python.exe', 'pythonw.exe')
     scriptLoc = os.path.join(os.path.dirname(
         os.path.realpath(__file__)), 'main.py') # Location of parser to be called
     menu = menus.ContextMenu('Sort Files', type='DIRECTORY_BACKGROUND')
 
-    extractCommand = menus.ContextCommand('Extract Files', command=f'{pyLoc} {scriptLoc} -x')
-    extensionCommand = menus.ContextCommand('Sort by Extension', command=f'{pyLoc} {scriptLoc} -e')
-    typeCommand = menus.ContextCommand('Sort by Type', command=f'{pyLoc} {scriptLoc} -t')
+    extractCommand = menus.ContextCommand('Extract Files', python=modules.handleExtract)
+    extensionCommand = menus.ContextCommand('Sort by Extension', python=modules.handleExtension)
+    typeCommand = menus.ContextCommand('Sort by Type', python=modules.handleType)
 
     dateMenu = menus.ContextMenu('Sort By Date')
     dateMenu.add_items([
-        menus.ContextCommand('Day', command=f'{pyLoc} {scriptLoc} -d D'),
-        menus.ContextCommand('Month', command=f'{pyLoc} {scriptLoc} -d M'),
-        menus.ContextCommand('Year', command=f'{pyLoc} {scriptLoc} -d Y')
+        menus.ContextCommand('Day', python=modules.handleDate, params='D'),
+        menus.ContextCommand('Month', python=modules.handleDate, params='M'),
+        menus.ContextCommand('Year', python=modules.handleDate, params='Y')
 
     ])
 
@@ -31,12 +34,14 @@ def install():
 
     menu.compile()
 
-if __name__ == '__main__':
-    install()
+
+def uninstall():
+    from context_menu import menus
+
+    menus.removeMenu('Sort Files', 'DIRECTORY_BACKGROUND')
 
 
-
-
+install()
 
 # if __name__ == "__main__":
 #     if is_admin():

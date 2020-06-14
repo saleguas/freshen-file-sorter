@@ -5,7 +5,7 @@ with open("../README.md", "r") as fh:
 
 setuptools.setup(
     name="freshen-sorter",  # Replace with your own username
-    version="1.5.12",
+    version="1.6.0",
     author="Salvador Aleguas",
     author_email="salvadoraleguas@gmail.com",
     description="A program that sorts files based on various attributes from the (currently only windows) context menu.",

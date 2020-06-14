@@ -27,6 +27,12 @@ First, install the pip package
 pip install freshen-sorter
 ```
 
+Install the dependencies:
+```python
+pip install pyyaml
+pip install context_menu
+```
+
 and run the following command to install to the context menu. This requires administrator permissions.
 
 ```python
@@ -35,6 +41,11 @@ freshen -i
 
 And you're done!
 
+To uninstall, simply run:
+
+```python
+freshen -u
+```
 ## Installing from Source files
 
 1.  Download the [latest release](https://github.com/saleguas/freshen/releases) from the repository.
@@ -95,15 +106,17 @@ You can either change the `filegroups.yml` file in the `src` directory and use t
 
 ## Sort by extension
 
-    Quite straightforward. Sorts each file into folders exclusively based on their extension.
-    ![](graphics/sortbyextension.gif)
+Quite straightforward. Sorts each file into folders exclusively based on their extension.
+
+![](graphics/sortbyextension.gif)
 
 ## Sort by Date
 
-    The only option that uses a cascading context menu(nested menus).
-    ![](graphics/cascadingmenu.png)
+The only option that uses a cascading context menu(nested menus).
 
-    Sorts each file by the **DATE MODIFIED** attribute of the file. Has three options:
+![](graphics/sortbydatemonth.PNG)
+
+Sorts each file by the **DATE MODIFIED** attribute of the file. Has three options:
 
 ### Day
 

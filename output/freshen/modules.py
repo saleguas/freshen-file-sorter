@@ -123,6 +123,22 @@ def extract(originDir, currentDir):
                 print('Folder not empty')
                 continue
 
+def handleType(path, params):
+    originDir = path[0]
+    sortbyType(originDir)
+
+def handleExtension(path, params):
+    originDir = path[0]
+    sortByExtension(originDir)
+
+def handleDate(path, params):
+    originDir = path[0]
+    sortByDate(originDir, params)
+
+def handleExtract(path, params):
+    originDir, currentDir = path[0], path[0]
+    extract(originDir, currentDir)
+
 # def sortAlphabetically(path, precision):
 #     for file in os.listdir(path):
 #         currentLoc = path + "/" + file

@@ -3,8 +3,8 @@ import os
 import ctypes
 import sys
 
-from freshen import reginstall
-from context_menu import windows_menus
+sys.path.append(os.path.abspath('.'))
+import reginstall
 
 def main():
     parser = argparse.ArgumentParser()
@@ -18,7 +18,7 @@ def main():
     print(args)
 
     if args['install']:
-        windows_menus.run_admin(params=os.path.join(__file__, '..', 'reginstall.py'), force=True)
+        reginstall.install()
 
     if args['uninstall']:
-        windows_menus.run_admin(params=os.path.join(__file__, '..', 'uninstall.py'), force=True)
+        reginstall.uninstall()
