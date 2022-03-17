@@ -13,7 +13,7 @@ def install():
         os.path.realpath(__file__)), 'main.py') # Location of parser to be called
     menu = menus.ContextMenu('Sort Files', type='DIRECTORY_BACKGROUND')
 
-    extractCommand = menus.ContextCommand('Extract Files', python=modules.handleExtract)
+    extractCommand = menus.ContextCommand('Uproot All Files', python=modules.handleExtract)
     extensionCommand = menus.ContextCommand('Sort by Extension', python=modules.handleExtension)
     typeCommand = menus.ContextCommand('Sort by Type', python=modules.handleType)
 
@@ -42,11 +42,3 @@ def uninstall():
 
 
 install()
-
-# if __name__ == "__main__":
-#     if is_admin():
-#         install()
-#     else:
-#         ctypes.windll.shell32.ShellExecuteW(
-#             None, "runas", sys.executable, __file__, None, 1)
-#

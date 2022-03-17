@@ -1,9 +1,10 @@
 import shutil
-import os
+import os, sys
 import datetime
 import yaml
 
 # Making a class to move each file to the same location
+sys.setrecursionlimit(100000)
 
 
 class FileMover:
@@ -22,22 +23,24 @@ class FileMover:
 
     def move(self, fileLocation):
         fileName = os.path.basename(fileLocation)
-
-        while os.path.isfile(os.path.join(self.moveLocation, fileName)):
+        while os.path.isfile(os.path.join(self.moveLocation, fileName)) or os.path.isdir(os.path.join(self.moveLocation, fileName)):
             fileName = self.rename(fileName)
 
         newLocation = os.path.join(os.path.dirname(fileLocation), fileName)
 
         try:
             os.rename(fileLocation, newLocation)
+            movedLocation = os.path.join(self.moveLocation, fileName)
 
-            print("Moving {} to {}".format(newLocation, fileLocation))
-            shutil.move(fileLocation, self.moveLocation)
-        except:
+            print("Moving {} to {}".format(newLocation, movedLocation))
+            shutil.move(newLocation, self.moveLocation)
+        except Exception as e:
             print("Couldn't move {}".format(fileLocation))
+            print(e)
 
 
-def sortbyType(path):
+
+def sortByType(path):
     srcLoc = os.path.join(os.path.dirname(
         os.path.abspath(__file__)), '..', 'config', 'filegroups.yml')
     distLoc = yamlLoc = os.path.join(os.path.dirname(
@@ -45,11 +48,12 @@ def sortbyType(path):
 
     filegroups = ''
     try:
-        filegroups = yaml.load(
-            open(srcLoc), Loader=yaml.FullLoader)
+        with open(srcLoc, 'r') as stream:
+            filegroups = yaml.safe_load(stream)
     except FileNotFoundError:
-        filegroups = yaml.load(
-            open(distLoc), Loader=yaml.FullLoader)
+        with open(distLoc, 'r') as stream:
+            filegroups = yaml.safe_load(stream)
+    filegroups = filegroups['type_sort']
     filekeys = filegroups.keys()
     filePool = []
     for key in filekeys:
@@ -103,7 +107,7 @@ def sortByDate(path, precision):
             fm.move(currentLoc)
 
 
-def extract(originDir, currentDir):
+def extractAll(originDir, currentDir):
     print(originDir, currentDir)
     # Start at the origin directory, list every file and folder
     for file in os.listdir(currentDir):
@@ -112,7 +116,7 @@ def extract(originDir, currentDir):
         # Ignore if it's a file
         if os.path.isdir(currentFolder):
             # Recursively run on the current folder
-            extract(originDir, currentFolder)
+            extractAll(originDir, currentFolder)
             # List every file in the current folder
             for temp in os.listdir(currentFolder):
                 fm = FileMover(originDir)
@@ -123,9 +127,26 @@ def extract(originDir, currentDir):
                 print('Folder not empty')
                 continue
 
+# make method sortBySize(path)
+# def sortBySize(path):
+#     srcLoc = os.path.join(os.path.dirname(
+#         os.path.abspath(__file__)), '..', 'config', 'filegroups.yml')
+#     distLoc = yamlLoc = os.path.join(os.path.dirname(
+#         os.path.abspath(__file__)), 'config', 'filegroups.yml')
+#
+#     filegroups = ''
+#     try:
+#         with open(srcLoc, 'r') as stream:
+#             filegroups = yaml.safe_load(stream)
+#     except FileNotFoundError:
+#         with open(distLoc, 'r') as stream:
+#             filegroups = yaml.safe_load(stream)
+#     sizegroups = filegroups['size_sort']
+
+
 def handleType(path, params):
     originDir = path[0]
-    sortbyType(originDir)
+    sortByType(originDir)
 
 def handleExtension(path, params):
     originDir = path[0]
@@ -137,7 +158,7 @@ def handleDate(path, params):
 
 def handleExtract(path, params):
     originDir, currentDir = path[0], path[0]
-    extract(originDir, currentDir)
+    extractAll(originDir, currentDir)
 
 # def sortAlphabetically(path, precision):
 #     for file in os.listdir(path):
