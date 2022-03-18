@@ -33,7 +33,7 @@ pip install pyyaml
 pip install context_menu
 ```
 
-and run the following command to install to the context menu. This requires administrator permissions.
+and run the following command to install to the context menu.
 
 ```python
 freshen -i
@@ -57,9 +57,9 @@ freshen -u
 # Usage
 
 Made to be simple! No complicated command lines needed.
-1\. Install the required files.
-2\. Right click on the background of any Directory
-3\. Go to the `Sort Files` option and selected the desired organizer.
+1. Install the required files.
+2. Right click on the background of any Directory
+3. Go to the `Sort Files` option and selected the desired organizer.
 
 # Organizers
 
